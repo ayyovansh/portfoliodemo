@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vansh Tyagi - Android Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #333;
+        }
+
+        /* ===== PAGE 1: INTRO PAGE ===== */
+        .page-1 {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page-1-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .page-1-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            color: #1a1a1a;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-1-content p {
+            font-size: 2rem;
+            font-style: italic;
+            color: #666;
+            font-weight: 300;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #333, transparent);
+            margin: 60px 0;
+            animation: expandWidth 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; opacity: 0; }
+            to { width: 100%; opacity: 1; }
+        }
+
+        .nav-button {
+            padding: 12px 32px;
+            margin-top: 30px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-button:hover {
+            background: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== PAGE 2: CONNECT PAGE ===== */
+        .page-2 {
+            min-height: 100vh;
+            background: #0a0a0a;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .page-2-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .page-2-content h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+            border-bottom: 2px solid white;
+            padding-bottom: 25px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .page-2-content p {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #ffffff;
+            margin-bottom: 40px;
+            animation: fadeInScale 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.5s both;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: #0a0a0a;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: white;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background: #f0f0f0;
+            transform: translateX(-4px);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-1-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .page-1-content p {
+                font-size: 1.5rem;
+            }
+
+            .page-2-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .page-2-content p {
+                font-size: 2.5rem;
+            }
+
+            .nav-button, .back-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-1-content h1 {
+                font-size: 2rem;
+            }
+
+            .page-1-content p {
+                font-size: 1.2rem;
+            }
+
+            .divider {
+                margin: 40px 0;
+            }
+
+            .page-2-content h2 {
+                font-size: 2rem;
+            }
+
+            .page-2-content p {
+                font-size: 2rem;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: Introduction -->
+    <div class="page-1" id="page1">
+        <div class="page-1-content">
+            <h1>Vansh Tyagi..</h1>
+            <p>android developer</p>
+        </div>
+        <div class="divider"></div>
+        <button class="nav-button" onclick="goToPage2()">Connect With Me</button>
+    </div>
+
+    <!-- PAGE 2: Connect -->
+    <div class="page-2" id="page2" style="display: none;">
+        <button class="back-button" onclick="goToPage1()">← Back</button>
+        <div class="page-2-content">
+            <h2>CONNECT WITH ME</h2>
+            <p>Coming soon..</p>
+            <!-- <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
+                <a href="https://github.com" target="_blank" title="GitHub">GH</a>
+                <a href="https://twitter.com" target="_blank" title="Twitter">𝕏</a>
+                <a href="mailto:contact@example.com" title="Email">✉</a>
+            </div> -->
+        </div>
+    </div>
+
+    <script>
+        function goToPage2() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'flex';
+            window.scrollTo(0, 0);
+        }
+
+        function goToPage1() {
+            document.getElementById('page1').style.display = 'flex';
+            document.getElementById('page2').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && document.getElementById('page1').style.display !== 'none') {
+                goToPage2();
+            }
+            if (e.key === 'ArrowLeft' && document.getElementById('page2').style.display !== 'none') {
+                goToPage1();
+            }
+        });
+    </script>
+</body>
+</html>
