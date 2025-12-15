@@ -1,333 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vansh Tyagi - Android Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vansh Tyagi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #333;
-        }
+    body{
+      font-family:'Share Tech Mono',monospace;
+      color:#00ff9c;
+      background:#020617;
+      overflow-x:hidden;
+    }
 
-        /* ===== PAGE 1: INTRO PAGE ===== */
-        .page-1 {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeIn 0.8s ease-in;
-        }
+    /* === GREEN GRAPH / RADAR GRID BACKGROUND === */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(0,255,156,0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,156,0.15) 1px, transparent 1px);
+      background-size:50px 50px;
+      mask-image:radial-gradient(circle at center, black 40%, transparent 75%);
+      animation:gridMove 25s linear infinite;
+      z-index:-2;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    @keyframes gridMove{
+      from{background-position:0 0,0 0}
+      to{background-position:500px 500px,500px 500px}
+    }
+      to{transform:rotate(360deg)}
+    }
 
-        .page-1-content {
-            text-align: center;
-            max-width: 800px;
-        }
+    /* Scanline overlay */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,156,0.04),
+        rgba(0,255,156,0.04) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events:none;
+      z-index:-1;
+    }
 
-        .page-1-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: -2px;
-            color: #1a1a1a;
-            animation: slideDown 0.8s ease-out;
-        }
+    header{
+      padding:25px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      background:rgba(2,6,23,0.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(0,255,156,0.4);
+      z-index:10;
+    }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    header h1{
+      font-family:'Orbitron',sans-serif;
+      letter-spacing:3px;
+      color:#00ff9c;
+    }
 
-        .page-1-content p {
-            font-size: 2rem;
-            font-style: italic;
-            color: #666;
-            font-weight: 300;
-            animation: slideUp 0.8s ease-out 0.2s both;
-        }
+    nav a{
+      margin-left:25px;
+      text-decoration:none;
+      color:#7fffd4;
+      font-size:.9rem;
+    }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    nav a:hover{color:#00ff9c}
 
-        .divider {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #333, transparent);
-            margin: 60px 0;
-            animation: expandWidth 0.8s ease-out 0.4s both;
-        }
+    section{
+      padding:110px 10%;
+      max-width:1200px;
+      margin:auto;
+    }
 
-        @keyframes expandWidth {
-            from { width: 0; opacity: 0; }
-            to { width: 100%; opacity: 1; }
-        }
+    /* === TERMINAL HERO === */
+    .hero{
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+    }
 
-        .nav-button {
-            padding: 12px 32px;
-            margin-top: 30px;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+    .terminal{
+      width:100%;
+      background:rgba(0,0,0,0.75);
+      border:1px solid #00ff9c;
+      border-radius:12px;
+      padding:35px;
+      box-shadow:0 0 40px rgba(0,255,156,0.35);
+    }
 
-        .nav-button:hover {
-            background: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
+    .terminal span{color:#00ff9c}
+    .terminal .cmd{color:#7dd3fc}
+    .blink{animation:blink 1s infinite}
+    @keyframes blink{50%{opacity:0}}
 
-        /* ===== PAGE 2: CONNECT PAGE ===== */
-        .page-2 {
-            min-height: 100vh;
-            background: #0a0a0a;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
+    .section-title{
+      font-family:'Orbitron',sans-serif;
+      color:#00ff9c;
+      margin-bottom:35px;
+      letter-spacing:2px;
+    }
 
-        .page-2::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
-            pointer-events: none;
-        }
+    /* === SKILLS === */
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
 
-        .page-2-content {
-            text-align: center;
-            z-index: 1;
-            max-width: 600px;
-        }
+    .skill-card{
+      background:rgba(0,0,0,0.65);
+      border:1px solid rgba(0,255,156,0.5);
+      padding:25px;
+      border-radius:14px;
+      transition:.4s;
+    }
 
-        .page-2-content h2 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            letter-spacing: -1px;
-            border-bottom: 2px solid white;
-            padding-bottom: 25px;
-            animation: slideDown 0.8s ease-out;
-        }
+    .skill-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 0 25px rgba(0,255,156,0.6);
+    }
 
-        .page-2-content p {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: #ffffff;
-            margin-bottom: 40px;
-            animation: fadeInScale 1s ease-out 0.3s both;
-        }
+    /* === CONTACT === */
+    .contact form{
+      max-width:520px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
 
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+    input,textarea{
+      background:#000;
+      border:1px solid #00ff9c;
+      padding:14px;
+      color:#00ff9c;
+      border-radius:8px;
+      font-family:'Share Tech Mono',monospace;
+    }
 
-        .social-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            animation: slideUp 0.8s ease-out 0.5s both;
-        }
+    button{
+      background:#00ff9c;
+      color:#020617;
+      border:none;
+      padding:14px;
+      font-weight:bold;
+      cursor:pointer;
+      border-radius:8px;
+      letter-spacing:1px;
+    }
 
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border: 2px solid white;
-            border-radius: 50%;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
+    footer{
+      text-align:center;
+      padding:40px;
+      font-size:.75rem;
+      color:#22c55e;
+    }
 
-        .social-links a:hover {
-            background: white;
-            color: #0a0a0a;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
-        }
+    /* === CENTER CONTACT NODE === */
+    .center-screen{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
 
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            background: white;
-            color: #0a0a0a;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .back-button:hover {
-            background: #f0f0f0;
-            transform: translateX(-4px);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .page-1-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .page-1-content p {
-                font-size: 1.5rem;
-            }
-
-            .page-2-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .page-2-content p {
-                font-size: 2.5rem;
-            }
-
-            .nav-button, .back-button {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page-1-content h1 {
-                font-size: 2rem;
-            }
-
-            .page-1-content p {
-                font-size: 1.2rem;
-            }
-
-            .divider {
-                margin: 40px 0;
-            }
-
-            .page-2-content h2 {
-                font-size: 2rem;
-            }
-
-            .page-2-content p {
-                font-size: 2rem;
-            }
-
-            .social-links {
-                gap: 15px;
-            }
-
-            .social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+    .contact-wrapper{
+      background:rgba(0,0,0,0.75);
+      border:1px solid #00ff9c;
+      border-radius:14px;
+      padding:40px;
+      box-shadow:0 0 40px rgba(0,255,156,0.4);
+    }
+  </style>
 </head>
 <body>
-    <!-- PAGE 1: Introduction -->
-    <div class="page-1" id="page1">
-        <div class="page-1-content">
-            <h1>Vansh Tyagi..</h1>
-            <p>android developer</p>
-        </div>
-        <div class="divider"></div>
-        <button class="nav-button" onclick="goToPage2()">Connect With Me</button>
-    </div>
 
-    <!-- PAGE 2: Connect -->
-    <div class="page-2" id="page2" style="display: none;">
-        <button class="back-button" onclick="goToPage1()">← Back</button>
-        <div class="page-2-content">
-            <h2>CONNECT WITH ME</h2>
-            <p>Coming soon..</p>
-            <!-- <div class="social-links">
-                <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
-                <a href="https://github.com" target="_blank" title="GitHub">GH</a>
-                <a href="https://twitter.com" target="_blank" title="Twitter">𝕏</a>
-                <a href="mailto:contact@example.com" title="Email">✉</a>
-            </div> -->
-        </div>
-    </div>
 
-    <script>
-        function goToPage2() {
-            document.getElementById('page1').style.display = 'none';
-            document.getElementById('page2').style.display = 'flex';
-            window.scrollTo(0, 0);
-        }
 
-        function goToPage1() {
-            document.getElementById('page1').style.display = 'flex';
-            document.getElementById('page2').style.display = 'none';
-            window.scrollTo(0, 0);
-        }
+<header>
+  <h1>VANSH TYAGI</h1>
+  <nav>
+    <a href="#about">ABOUT</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' && document.getElementById('page1').style.display !== 'none') {
-                goToPage2();
-            }
-            if (e.key === 'ArrowLeft' && document.getElementById('page2').style.display !== 'none') {
-                goToPage1();
-            }
-        });
-    </script>
+<section class="hero">
+  <div class="terminal">
+    <p><span>root@vansh</span>:<span class="cmd">~$</span> who_am_i</p>
+    <p>Android Developer | BCA Student</p>
+    <p><span>root@vansh</span>:<span class="cmd">~$</span> cat mission.txt</p>
+    <p>Building secure, futuristic and high‑performance digital systems.</p>
+    <p><span>root@vansh</span>:<span class="cmd">~$</span> <span class="blink">█</span></p>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">ABOUT_ME</h2>
+  <p>
+    I specialize in crafting clean code, Android applications and modern web interfaces with a hacker‑inspired mindset focused on performance, security and precision.
+  </p>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">SKILLSET</h2>
+  <div class="skills-grid">
+    <div class="skill-card">Python · Java · C · JavaScript</div>
+    <div class="skill-card">HTML · CSS · Responsive UI</div>
+    <div class="skill-card">Android Studio · APIs · UI/UX</div>
+    <div class="skill-card">Git · GitHub · VS Code</div>
+  </div>
+</section>
+
+<section id="contact" class="contact center-screen">
+  <div class="contact-wrapper">
+    <h2 class="section-title">CONTACT_NODE</h2>
+    <form action="https://formspree.io/f/xeoywgzy" method="POST">
+      <input type="hidden" name="_subject" value="New Contact from Hacker Portfolio">
+      <input type="text" name="name" placeholder="name" required>
+      <input type="email" name="email" placeholder="email" required>
+      <textarea name="message" rows="5" placeholder="message" required></textarea>
+      <button type="submit">SEND_PACKET</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © 2025 Vansh Tyagi :: SYSTEM ONLINE
+</footer>
+
 </body>
 </html>
