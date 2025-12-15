@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vansh Tyagi</title>
+  <title>Vansh Tyagi | Hacker Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
@@ -63,6 +63,37 @@
       backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(0,255,156,0.4);
       z-index:10;
+    }
+
+    /* === MOBILE NAV === */
+    .menu-btn{
+      display:none;
+      font-size:1.5rem;
+      cursor:pointer;
+      color:#00ff9c;
+    }
+
+    @media (max-width:768px){
+      nav{
+        position:absolute;
+        top:100%;
+        right:0;
+        background:#020617;
+        width:100%;
+        display:none;
+        flex-direction:column;
+        text-align:center;
+        border-bottom:1px solid rgba(0,255,156,0.4);
+      }
+
+      nav a{
+        margin:15px 0;
+        display:block;
+        font-size:1rem;
+      }
+
+      nav.active{display:flex}
+      .menu-btn{display:block}
     }
 
     header h1{
@@ -192,6 +223,7 @@
 
 <header>
   <h1>VANSH TYAGI</h1>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
   <nav>
     <a href="#about">ABOUT</a>
     <a href="#skills">SKILLS</a>
@@ -202,7 +234,7 @@
 <section class="hero">
   <div class="terminal">
     <p><span>root@vansh</span>:<span class="cmd">~$</span> who_am_i</p>
-    <p>Android Developer | BCA Student</p>
+    <p>Android Developer</p>
     <p><span>root@vansh</span>:<span class="cmd">~$</span> cat mission.txt</p>
     <p>Building secure, futuristic and high‑performance digital systems.</p>
     <p><span>root@vansh</span>:<span class="cmd">~$</span> <span class="blink">█</span></p>
@@ -242,6 +274,12 @@
 <footer>
   © 2025 Vansh Tyagi :: SYSTEM ONLINE
 </footer>
+
+<script>
+  function toggleMenu(){
+    document.querySelector('nav').classList.toggle('active');
+  }
+</script>
 
 </body>
 </html>
